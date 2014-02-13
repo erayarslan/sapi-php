@@ -6,9 +6,7 @@ require_once("Error.php");
 require 'Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
-$app = new \Slim\Slim(array(
-    'debug' => true
-));
+$app = new \Slim\Slim();
 
 $app->get('/', function () {
     $city = new City();
@@ -35,6 +33,19 @@ $app->get('/line/:name', function($name){
     echo json_encode($matchedLines);
 });
 
+$app->get('/line/:name/buses', function($name){
+    $city = new City();
+    $matchedLinesBusIds = array();
+    foreach($city->lineList as $i) {
+        if($i->name==$name) {
+            foreach($i->busList as $j) {
+                $matchedLinesBusIds[] = $j->id;
+            }
+        }
+    }
+    echo json_encode($matchedLinesBusIds);
+});
+
 $app->get('/line/:name/bus/:id', function($name,$id){
     $city = new City();
     $matchedBuses = array();
@@ -50,12 +61,10 @@ $app->get('/line/:name/bus/:id', function($name,$id){
     echo json_encode($matchedBuses);
 });
 
-
-
 $app->notFound(function () {
     $error = new Error();
-    $error->setMessage("Not Found");
-    $error->setDocumentationUrl("https://github.com/8cookin/sapi-php");
+    $error->message="Not Found";
+    $error->documentation_url="https://github.com/8cookin/sapi-php";
     echo json_encode($error);
 });
 
