@@ -24,13 +24,12 @@ $app->get('/lines', function () {
 
 $app->get('/line/:name', function($name){
     $city = new City();
-    $matchedLines = array();
     foreach($city->lineList as $i) {
         if($i->name==$name) {
-            $matchedLines[] = $i;
+            echo json_encode($i);
+            break;
         }
     }
-    echo json_encode($matchedLines);
 });
 
 $app->get('/line/:name/buses', function($name){
