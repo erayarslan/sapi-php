@@ -10,7 +10,7 @@ $app = new \Slim\Slim();
 
 $app->get('/', function () {
     $city = new City();
-	echo json_encode($city);
+    echo json_encode($city);
 });
 
 $app->get('/lines', function () {
@@ -19,7 +19,7 @@ $app->get('/lines', function () {
     foreach($city->lineList as $i) {
         $lineNameList[] = $i->name;
     }
-	echo json_encode($lineNameList);
+    echo json_encode($lineNameList);
 });
 
 $app->get('/line/:name', function($name){
