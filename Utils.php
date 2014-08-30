@@ -19,4 +19,4 @@ class Utils {
 
         return $xmlDoc->documentElement->firstChild;
     }
-} 
+}

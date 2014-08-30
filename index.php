@@ -27,7 +27,7 @@ $app->get('/line/:name', function($name){
     foreach($city->lineList as $i) {
         if($i->name==$name) {
             echo json_encode($i);
-            break;
+            return;
         }
     }
 });
@@ -47,17 +47,16 @@ $app->get('/line/:name/buses', function($name){
 
 $app->get('/line/:name/bus/:id', function($name,$id){
     $city = new City();
-    $matchedBuses = array();
     foreach($city->lineList as $i) {
         if($i->name==$name) {
             foreach($i->busList as $j) {
                 if($j->id==$id) {
-                    $matchedBuses[] = $j;
+                    echo json_encode($j);
+		    return;
                 }
             }
         }
     }
-    echo json_encode($matchedBuses);
 });
 
 $app->notFound(function () {
