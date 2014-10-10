@@ -14,10 +14,3 @@ Sakarya Bus Trace and Report JSON-API with PHP
 
 - [SAKUS](http://sakus.sakarya.bel.tr)
 
-## author
-
-* [Eray Arslan](http://erayarslan.com)
-
-
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/8cookin/sapi-php/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
