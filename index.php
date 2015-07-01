@@ -59,6 +59,18 @@ $app->get('/line/:name/bus/:id', function($name,$id){
     }
 });
 
+$app->get('/route/:name', function($name){
+    $utils = new Utils();
+    $coordinateList;
+    $coordinates = explode(" ", $utils->getRoute($name));
+    foreach($coordinates as $coordinate) {
+      $tempSwap = explode(",", $coordinate);
+      $tempCoordinate = new Coordinate();
+      $coordinateList[] = $tempCoordinate->withCoor($tempSwap[1],$tempSwap[0]);
+    }
+    echo json_encode($coordinateList);
+});
+
 $app->notFound(function () {
     $error = new Error();
     $error->message="Not Found";
