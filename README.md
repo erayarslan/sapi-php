@@ -9,8 +9,8 @@ Sakarya Bus Trace and Report JSON-API with PHP
 - `GET /line/:name` Get the all bus information of line.
 - `GET /line/:name/buses` Get all bus id of line.
 - `GET /line/:name/bus/:id` Get bus information of line.
+- `GET /route/:name` Get route information of line.
 
 ## dependencies
 
 - [SAKUS](http://sakus.sakarya.bel.tr)
-
